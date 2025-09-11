@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>주유 계산기 (Ver3)</title>
+
+  <!-- ✅ manifest 등록 -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- ✅ TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-4 text-sm min-h-screen">
+  <h1 class="text-lg font-bold mb-4 whitespace-nowrap">● 주유 계산기(Ver3) - 문의 : Gangsterz</h1>
+
+  <!-- 결과 Page -->
+  <section class="bg-white p-4 rounded-lg shadow mb-6">
+    <div class="flex justify-between items-center mb-4" style="max-width: 304px;">
+      <h2 class="font-semibold text-base whitespace-nowrap">◉ 쉬운 주유 설명</h2>
+      <div class="flex gap-2">
+        <button id="btnCopyExplain" class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">복사</button>
+        <button id="btnCalcExplain" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">계산하기</button>
+      </div>
+    </div>
+    <div class="space-y-1 text-sm text-gray-800">
+      <div><span id="explainStart1"></span></div>
+      <div><span id="explain1"></span></div>
+      <div><span id="explain2"></span></div>
+      <div><span id="explain3"></span></div>
+      <div><span id="explain4"></span></div>
+      <div><span id="explain5"></span></div>
+      <div><span id="explain6"></span></div>
+      <div><span id="explain7"></span></div>
+      <div class="text-xs text-gray-500 mt-4 pt-2">※ 참고사항 : 없음</div>
+    </div>
+  </section>
+
+  <!-- 상대시간 입력 Page -->
+  <section class="bg-white p-4 rounded-lg shadow mb-6">
+    <div class="flex items-center gap-24 flex-nowrap overflow-x-auto whitespace-nowrap mb-5">
+      <h2 class="font-semibold whitespace-nowrap text-base">◉  상대시간 입력 page</h2>
+      <label class="inline-flex items-center whitespace-nowrap text-sm">
+        <input id="useEnemyTimeCheckbox" type="checkbox" class="mr-1" /> 사용
+      </label>
+    </div>
+
+    <div class="space-y-2">
+
+         <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
+        <label class="w-28 shrink-0 text-blue-600">집결 잔여 시간</label>
+        <input id="rallyRemainTime" type="text" class="border rounded px-2 py-1 w-32 shrink-0 text-blue-600" placeholder="HH:mm:ss" />
+        <button id="resetRallyRemainTime" class="bg-gray-300 px-2 py-1 rounded shrink-0">리셋</button>
+      </div>
+      <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
+        <label class="w-28 shrink-0 text-blue-600">상대 행군 시간</label>
+        <input id="enemyMarchTime" type="text" class="border rounded px-2 py-1 w-32 shrink-0 text-blue-600" placeholder="HH:mm:ss" />
+        <button id="resetEnemyMarchTime" class="bg-gray-300 px-2 py-1 rounded shrink-0">리셋</button>
+      </div>
+      <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
+        <label class="w-28 shrink-0">UTC 시간</label>
+           <input id="utcTime" type="text" class="border rounded px-2 py-1 w-32 shrink-0" placeholder="HH:mm:ss" />
+           <button id="resetUtcTime" class="bg-gray-300 px-2 py-1 rounded shrink-0">리셋</button>
+         </div>
+    </div>
+    <div class="mt-4 text-xs text-gray-600">
+      <label class="inline-flex items-center whitespace-nowrap">
+        <input id="useUtcCheckbox" type="checkbox" class="mr-1" /> UTC 자동 사용 (기입 시점 감안 필요)
+      </label>
+    </div>
+  </section>
+
+<!-- 스위칭시간 입력 Page -->
+<section class="bg-white p-4 rounded-lg shadow mb-6">
+  <div class="flex items-center justify-between flex-nowrap overflow-x-auto whitespace-nowrap mb-5" style="max-width: 304px;">
+    <h2 class="font-semibold whitespace-nowrap text-base">◉  스위칭시간 입력 page</h2>
+    <label class="inline-flex items-center whitespace-nowrap text-sm">
+      <input id="useSwitchTimeCheckbox" type="checkbox" class="mr-1" /> 사용
+    </label>
+  </div>
+
+  <div class="space-y-2">
+    <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
+      <label class="w-28 shrink-0 text-blue-600">목표 시간</label>
+      <input id="SwitchTime" type="text" class="border rounded px-2 py-1 w-32 shrink-0 text-blue-600" placeholder="HH:mm:ss" />
+      <button id="resetSwitchTime" class="bg-gray-300 px-2 py-1 rounded shrink-0">리셋</button>
+    </div>
+  </div>
+
+  <div class="mt-4 text-xs text-gray-600 flex gap-4">
+    <label class="inline-flex items-center whitespace-nowrap">
+      <input id="useSwitchCheckbox1" type="checkbox" class="mr-1" /> UTC 1분뒤
+    </label>
+    <label class="inline-flex items-center whitespace-nowrap">
+      <input id="useSwitchCheckbox2" type="checkbox" class="mr-1" /> UTC 1분 30초뒤
+    </label>
+    <label class="inline-flex items-center whitespace-nowrap">
+      <input id="useSwitchCheckbox3" type="checkbox" class="mr-1" /> UTC 2분뒤
+    </label>
+  </div>
+</section>
+
+  <!-- ✅ 자바스크립트 -->
+  <script src="script.js"></script>
+
+  <!-- ✅ PWA 서비스 워커 등록 -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(registration => {
+            console.log('ServiceWorker 등록 성공:', registration.scope);
+          })
+          .catch(error => {
+            console.log('ServiceWorker 등록 실패:', error);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
