@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const totalSec = rallySec + enemySec + utcSec;
       const explainStartEl = document.getElementById("explainStart1");
       const totalMinSec = formatSecondsToMinSec(totalSec);
-      explainStartEl.innerHTML = `※ 공격 도착시간 : ${totalMinSec}<br>- 주유 준비하세요<br><br>&lt;행군&gt; | 주유시간`;
+      explainStartEl.innerHTML = `※ 공격 도착시간 : ${totalMinSec}<br><br>&lt;행군&gt; | 주유시간`;
       explainStartEl.classList.add("text-blue-600");
 
       const offsets = [60, 55, 50, 45, 40, 35, 30];
