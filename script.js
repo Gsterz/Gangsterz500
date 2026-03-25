@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const totalSec = switchSec;
       const explainStartEl = document.getElementById("explainStart1");
       const switchMinSec = formatSecondsToMinSec(switchSec);
-      explainStartEl.innerHTML = `※ 스위칭 목표시간 : ${switchMinSec}<br>- 5초전 병력 비워주세요<br><br>&lt;행군&gt; | 주유시간`;
+      explainStartEl.innerHTML = `※ 스위칭 목표시간 : ${switchMinSec}<br><br>&lt;행군&gt; | 주유시간`;
       explainStartEl.classList.add("text-blue-600");
 
       const offsets = [60, 55, 50, 45, 40, 35, 30];
